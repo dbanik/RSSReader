@@ -72,7 +72,9 @@ class SWFeedViewController : UITableViewController, XMLParserDelegate, FeedDownl
     // MARK: - FeedDownloadBaseDelegateProtocol
     
     func downloadDone(_ data: Data?) {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        DispatchQueue.main.async {
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        }
         guard let unwrappedData = data else {
             return
         }
